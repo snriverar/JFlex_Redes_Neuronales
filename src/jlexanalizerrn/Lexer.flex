@@ -1,23 +1,24 @@
+package jlexanalizerrn;
+import static jlexanalizerrn.Token.*;
+
 %{
 
-#include <math.h>
-#include <stdio.h>
-void pal_reservada(char const *cadena);
-void identificador(char const *cadena);
-void entero(char const *cadena);
-void real(char const *cadena);
-void teminador(char const *ter);
-void parentesis(char const *par);
-void operadorar(char const *oper_ar);
-void operadorlog(char const *oper_log);
-void operadorrel(char const *oper_rel);
-void opasig(char const *op_as);
-void opdif(char const *op_dif);
-void opcomp(char const *op_comp);
-void corchete(char const *corc);
-void comilla(char const *com);
-void dospunt(char const *ds_pun);
-void operadorcom(char const *comn);
+void pal_reservada(String cadena);
+void identificador(String cadena);
+void entero(String cadena);
+void real(String cadena);
+void teminador(String ter);
+void parentesis(String par);
+void operadorar(String oper_ar);
+void operadorlog(String oper_log);
+void operadorrel(String oper_rel);
+void opasig(String op_as);
+void opdif(String op_dif);
+void opcomp(String op_comp);
+void corchete(String corc);
+void comilla(String com);
+void dospunt(String ds_pun);
+void operadorcom(String comn);
 
 %}
 
@@ -82,11 +83,11 @@ arreglo_salida          \[({ENTRADA_CELULA}) (\,{ARREGLO_SALIDA})*\]     //CONJU
 
 [ \t\n\r\b]+	     /* consumir espacios */
 
-.	                printf( "Caracter desconocido: %s\n", yytext );
 
 
 %%
 
+/*
 int main(int argc, char *argv[])
 {
     ++argv, --argc;  /* se salta el nombre del programa */
@@ -104,72 +105,72 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+ */
 
-
-void entero(char const *cadena){
-    printf("Un entero: %s \n", cadena );
+void entero(String cadena){
+    System.out.print("Un entero: %s \n"+cadena);
 }
 
-void real(char const *cadena){
-    printf("Un real: %s \n", cadena );
+void real(String cadena){
+    System.out.print("Un real: %s \n"+cadena);
 }
 
-void pal_reservada(char const *cadena){
-    printf("Una palabra reservada: %s \n", cadena );
+void pal_reservada(String cadena){
+    System.out.print("Una palabra reservada: %s \n"+cadena);
 }
 
-void identificador(char const *cadena){
-    printf("Un identificador: %s \n", cadena );
+void identificador(String cadena){
+    System.out.print("Un identificador: %s \n"+cadena);
 }
 
-void teminador(char  const *ter){
-    printf("Terminador de instrucción: %s \n",ter );
+void teminador(String ter){
+    System.out.print("Terminador de instrucción: %s \n"+ter );
 }
 
-void parentesis(char const *par ){
+void parentesis(String par ){
     if(*par == '(' ){
-        printf("Un parentesis que abre: %s \n", par);
+        System.out.print("Un parentesis que abre: %s \n"+ par);
     }else if (*par == ')') {
-        printf("Un parentesis que cierra: %s \n",par );
+        System.out.print("Un parentesis que cierra: %s \n"+par );
     }
 
 }
 
-void operadorar(char const *oper_ar){
-    printf("Un operador aritmetico: %s\n", oper_ar);
+void operadorar(String oper_ar){
+    System.out.print("Un operador aritmetico: %s\n"+ oper_ar);
 
 }
 
-void operadorlog(char const *oper_log){
-    printf("Un operador lógico: %s \n", oper_log);
+void operadorlog(String oper_log){
+    System.out.print("Un operador lógico: %s \n"+ oper_log);
 }
 
-void operadorrel(char const *oper_rel){
-    printf("Un operador relacional: %s \n", oper_rel);
+void operadorrel(String oper_rel){
+    System.out.print("Un operador relacional: %s \n"+ oper_rel);
 }
 
-void opasig(char const *op_as){
-    printf("Un operador de asignación: %s \n", op_as);
+void opasig(String op_as){
+    System.out.print("Un operador de asignación: %s \n"+ op_as);
 }
 
-void opdif(char const *op_dif){
-    printf("Un operador de diferencia: %s\n", op_dif);
+void opdif(String op_dif){
+    System.out.print("Un operador de diferencia: %s\n"+ op_dif);
 }
 
-void opcomp(char const *op_comp){
-    printf("Un operador de comparación: %s \n", op_comp);
+void opcomp(String op_comp){
+    System.out.print("Un operador de comparación: %s \n"+ op_comp);
 }
 
-void corchete(char const *corc){
-    printf("Un corchete: %s \n", corc);
+void corchete(String corc){
+    System.out.print("Un corchete: %s \n"+ corc);
 }
 
-void dospunt(char const *ds_pun){
-    printf("caracter dos puntos: %s \n",ds_pun);
+void dospunt(String ds_pun){
+    System.out.print("caracter dos puntos: %s \n"+ds_pun);
 }
-void comilla(char const *com){
-    printf("caracter comilla: %s \n",com);
+void comilla(String com){
+    System.out.print("caracter comilla: %s \n"+com);
 }
-void operadorcom(char const *comn){
-    printf("Operador para comentarios: %s\n", comn);
+void operadorcom(String comn){
+    System.out.print("Operador para comentarios: %s\n"+ comn);
 }
